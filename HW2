@@ -1,0 +1,146 @@
+#include <iostream>
+#define _USE_MATH_DEFINES 
+#include <math.h>
+using namespace std;
+
+void task1() 
+{
+	double h, R, r, l, V, S;
+	double pi = M_PI;
+	cout << "Введите нижний радиус, верхний радиус, высоту и образующую" << "\n";
+	cin >> R >> r >> h >> l;
+	if (cin.fail()) //определяет, соответствует ли введенное значение значению, указанному в переменной
+	{
+		cin.clear();  
+		cin.ignore(1000,'\n'); 
+	}
+	if ((R > 0) & (r > 0) & (h > 0) & (l > 0)) {
+
+		V = pi * h * (R * R + R * r + r * r) / 3;
+		S = pi * (R * R + (R + r) * l + r * r);
+		cout << "Объем = " << V << "\n" << "Площадь полной поверхности = " << S << "\n";
+	}
+	else {
+		cout << "Ошибка, введите данные заново" << "\n";
+	}
+} //-
+
+void task2()
+{
+	double a, x, w;
+	cout << "Введите два числа x и a такие,что: x>0 и (a-x^2)>0" << "\n";
+	cin >> x >> a;
+	if (cin.fail()) 
+	{
+		cin.clear();
+		cin.ignore(1000, '\n');
+	}
+	if ((x > 0) && (a>0) && ((a - x * x) > 0)) {
+
+		if (abs(x) < 1)
+		{
+			w = a * log(abs(x));
+		}
+		else
+		{
+			w = sqrt(a - x * x);
+		}
+		cout << w << "\n";
+	}
+	else
+	{
+		cout << "Ошибка, введите данные повторно" << "\n";
+	}
+}
+
+void task3()
+{
+	double z, b, y, x;
+	cout << "Введите 3 числа x,y,b такие, что: b>y и b>x" << "\n";
+	cin >> x >> y >> b;
+	if (cin.fail()) 
+	{
+		cin.clear();
+		cin.ignore(1000, '\n');
+	}
+	if (((b - y) > 0) && ((b - x) > 0))
+	{
+
+		z = log(b - y) * sqrt(b - x);
+		cout << z << "\n";
+
+	}
+	else
+	{
+		cout << "Ошибка, введите данные повторно" << "\n";
+	}
+
+}
+
+void task4()
+{
+	int n, i, a;
+	cout << "Введите натуральное число" << "\n";
+	cin >> n;
+	if (cin.fail()) 
+	{
+		cin.clear();
+		cin.ignore(1000, '\n');
+	}
+	if (n >= 0) {
+		for (i = 0; i < 10; i++)
+		{
+			cout << n << " ";
+			n++;
+		}
+		cout << "\n";
+	}
+	else {
+		cout << "ERROR" << "\n";
+	}
+} //-
+
+void task5()
+{
+	double a, b, h, x, y;
+	a = -4;
+	b = 4;
+	h = 0.5;
+	for (x = a; x <= b; x += h)
+		if (x != 1) {
+			y = (x * x - 2 * x - 2) / (x - 1);
+			cout << " x= " << x << " y= " << y << "\n";
+		}
+		else cout << " x= " << x << " y=" << " Не существует " << "\n";
+	system("pause");
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	int k;
+	while (true)
+	{
+		cout << "Введите номер задания от 1 до 5, 0 для очистки экрана, 9 для выхода из программы ";
+		cin >> k;
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+		switch (k)
+		{
+			case 1: task1(); break;
+			case 2: task2(); break;
+			case 3: task3(); break;
+			case 4: task4(); break;
+			case 5: task5(); break;
+			case 9: exit(0); break;
+			case 0: system("cls"); break;
+			default: cout << "Негодование" << "\n";
+				
+		}
+	}
+
+}
